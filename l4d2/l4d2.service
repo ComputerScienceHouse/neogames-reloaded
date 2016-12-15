@@ -1,0 +1,15 @@
+[Unit]
+Description=Left 4 Dead 2 Service
+Documentation=https://github.com/ComputerScienceHouse/neogames-reloaded
+
+[Service]
+WorkingDirectory=/home/steam/l4d2
+Environment="LD_LIBRARY_PATH=/home/steam/l4d2:/home/steam/l4d2/bin"
+ExecStartPre=/home/steam/steamcmd/steamcmd.sh +login anonymous +force_install_dir /home/steam/l4d2 +app_set_config 222860 +app_update 222860 +quit
+ExecStart=/home/steam/l4d2/srcds_run
+User=steam
+TimeoutStartSec=0
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
